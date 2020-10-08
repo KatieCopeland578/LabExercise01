@@ -16,6 +16,14 @@ namespace LabExercise01
                 Console.WriteLine("File does not exist.");
             }
 
+            string data = null;
+            string[] words;
+            using (var reader = new StreamReader("input.txt"))
+            {
+                data = reader.ReadToEnd();
+                words = data.Split(' ');
+            }
+
             Console.ReadKey();
         }
     }
