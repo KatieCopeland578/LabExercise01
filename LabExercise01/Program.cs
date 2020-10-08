@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 
@@ -19,13 +20,14 @@ namespace LabExercise01
             }
 
             string data = null;
-            string[] words;
+            
             using (var reader = new StreamReader("input.txt"))
             {
                 data = reader.ReadToEnd();
                 data = data.ToLower();
-                StripPunctuation(data);
-                words = data.Split(' ');
+                data = StripPunctuation(data);
+                data = SortAlphabetically(data);
+                
             }
 
             Console.ReadKey();
@@ -40,6 +42,20 @@ namespace LabExercise01
                 {
                     sb.Append(character);
                 }
+            }
+            return sb.ToString();
+        }
+
+        public static string SortAlphabetically(string data)
+        {
+            string[] words;
+            words = data.Split(' ');
+            Array.Sort(words);
+            var sb = new StringBuilder();
+            foreach(string word in words)
+            {
+                sb.Append(word);
+                sb.Append(" ");
             }
             return sb.ToString();
         }
