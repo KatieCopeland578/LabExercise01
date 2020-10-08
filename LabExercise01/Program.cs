@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace LabExercise01
 {
@@ -6,7 +7,16 @@ namespace LabExercise01
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello again, World!");
+            if (File.Exists("input.txt"))
+            {
+                Console.WriteLine("File exists.");
+            }
+            else
+            {
+                Console.WriteLine("File does not exist.");
+            }
+
+            Console.ReadKey();
         }
     }
 }
